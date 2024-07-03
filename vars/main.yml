@@ -1,0 +1,19 @@
+---
+debian_users:
+  - username: "user1"
+    password: "password1"
+  - username: "user2"
+    password: "password2"
+
+postgres_users:
+  - username: "pguser1"
+    password: "pgpassword1"
+  - username: "pguser2"
+    password: "pgpassword2"
+
+database_name: "mydatabase"
+backup_directory: "/var/backups/postgresql"
+basic_packages:
+  - vim
+  - curl
+  - git
