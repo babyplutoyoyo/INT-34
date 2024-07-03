@@ -63,6 +63,11 @@
         enabled: yes
         state: started
 
+    - name: Install psycopg2 for PostgreSQL connection
+      apt:
+        name: python3-psycopg2
+        state: present
+
 
     - name: Create PostgreSQL database
       postgresql_db:
@@ -80,10 +85,6 @@
       loop: "{{ postgres_users }}"
       become_user: postgres
 
-    - name: Install psycopg2 for PostgreSQL connection
-      apt:
-        name: python3-psycopg2
-        state: present
 
     - name: Create backup script
       copy:
