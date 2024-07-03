@@ -85,6 +85,15 @@
       loop: "{{ postgres_users }}"
       become_user: postgres
 
+    - name: Retrieve PostgreSQL roles information
+      become_user: postgres
+      shell: |
+        psql -d "{{ database_name }}" -c "\du"
+      register: pg_roles_info
+
+    - name: Display PostgreSQL roles information
+      debug:
+        var: pg_roles_info.stdout_lines
 
     - name: Create backup script
       copy:
